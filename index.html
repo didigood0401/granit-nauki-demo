@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Гранит науки - эскиз сайта журнала</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1f22;--mute:#5f646b;--line:#dcd8d0;--paper:#fbfaf7;--accent:#7a2e1f;--accent2:#a3472f;--soft:#f2efe8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 'PT Serif',Georgia,serif}
+a{color:var(--accent)}a:hover{color:var(--accent2)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.sans{font-family:'PT Sans',Arial,sans-serif}
+/* demo bar */
+.demo{background:#1d1f22;color:#e8e4dc;font:13px/1.4 'PT Sans',sans-serif;text-align:center;padding:8px 12px}
+.demo b{color:#e9b9a6}
+/* header */
+header{border-bottom:3px double var(--ink);background:#fff}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding:26px 0 16px}
+.logo{text-decoration:none;color:var(--ink)}
+.logo .t{font-size:40px;line-height:1;font-weight:700;letter-spacing:.01em}
+.logo .s{display:block;font:14px/1.4 'PT Sans',sans-serif;color:var(--mute);margin-top:6px}
+.meta{font:13px/1.6 'PT Sans',sans-serif;color:var(--mute);text-align:right}
+nav{display:flex;gap:26px;flex-wrap:wrap;padding:10px 0 12px;border-top:1px solid var(--line);font:15px 'PT Sans',sans-serif}
+nav a{color:var(--ink);text-decoration:none;padding-bottom:2px;border-bottom:2px solid transparent;cursor:pointer}
+nav a.on,nav a:hover{border-color:var(--accent);color:var(--accent)}
+.view{display:none;padding:40px 0 60px}.view.on{display:block}
+h1{font-size:34px;line-height:1.2;margin:0 0 10px}
+h2{font-size:24px;line-height:1.25;margin:0 0 14px}
+.kicker{font:700 12px/1 'PT Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.grid{display:grid;grid-template-columns:1.45fr 1fr;gap:48px}
+/* current issue */
+.issue{display:grid;grid-template-columns:170px 1fr;gap:26px;align-items:start}
+.cover{aspect-ratio:3/4.2;background:linear-gradient(160deg,#3a3d42,#1d1f22);color:#f1ece3;padding:18px 16px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:6px 6px 0 var(--soft)}
+.cover .ct{font-weight:700;font-size:20px;line-height:1.1}
+.cover .cn{font:12px/1.4 'PT Sans',sans-serif;opacity:.8}
+.cover .cb{border-top:1px solid #f1ece355;padding-top:8px;font:12px 'PT Sans',sans-serif}
+.alist{list-style:none;margin:0;padding:0}
+.alist li{padding:14px 0;border-bottom:1px solid var(--line)}
+.alist li:first-child{padding-top:0}
+.atitle{font-weight:700;font-size:18px;line-height:1.35;text-decoration:none;color:var(--ink);cursor:pointer}
+.atitle:hover{color:var(--accent)}
+.auth{font:14px 'PT Sans',sans-serif;color:var(--mute);margin-top:4px}
+.tag{display:inline-block;font:12px 'PT Sans',sans-serif;color:var(--mute);border:1px solid var(--line);padding:1px 8px;border-radius:20px;margin-right:6px}
+aside .box{border:1px solid var(--line);background:#fff;padding:20px 22px;margin-bottom:22px}
+aside .box h3{font:700 13px 'PT Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;margin:0 0 10px;color:var(--mute)}
+aside .box p{margin:0 0 8px;font-size:15px}
+.btn{display:inline-block;font:700 15px 'PT Sans',sans-serif;background:var(--accent);color:#fff;text-decoration:none;padding:11px 20px;border:0;cursor:pointer}
+.btn:hover{background:var(--accent2);color:#fff}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.idx{font:14px/1.9 'PT Sans',sans-serif}
+/* archive */
+.years{display:flex;gap:8px;margin:0 0 22px;flex-wrap:wrap}
+.years button{font:700 14px 'PT Sans',sans-serif;background:#fff;border:1px solid var(--line);padding:7px 14px;cursor:pointer}
+.years button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.arch{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.arch .cover{cursor:pointer;transition:transform .2s}
+.arch .cover:hover{transform:translateY(-3px)}
+/* article */
+.art{max-width:760px}
+.crumbs{font:13px 'PT Sans',sans-serif;color:var(--mute);margin-bottom:18px}
+.crumbs a{cursor:pointer}
+.amet{font:14px/1.7 'PT Sans',sans-serif;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin:18px 0 22px;display:grid;grid-template-columns:140px 1fr;gap:4px 16px}
+.amet dt{color:var(--mute)}.amet dd{margin:0}
+.abstract{background:#fff;border-left:3px solid var(--accent);padding:16px 20px;font-size:16px}
+.cite{font:13px/1.5 'PT Sans',sans-serif;background:var(--soft);padding:12px 14px;margin-top:18px;position:relative}
+.cite button{position:absolute;right:8px;top:8px;font:12px 'PT Sans',sans-serif;border:1px solid var(--line);background:#fff;padding:3px 8px;cursor:pointer}
+/* form */
+form{display:grid;gap:14px;max-width:640px}
+label{font:700 14px 'PT Sans',sans-serif}
+input,select,textarea{width:100%;font:16px 'PT Sans',sans-serif;padding:10px 12px;border:1px solid #c9c4ba;background:#fff;margin-top:5px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.drop{border:2px dashed #c9c4ba;background:#fff;padding:22px;text-align:center;font:15px 'PT Sans',sans-serif;color:var(--mute);cursor:pointer}
+.drop.ok{border-color:var(--accent);color:var(--ink)}
+.note{font:13px 'PT Sans',sans-serif;color:var(--mute)}
+.sent{display:none;background:#eef4ec;border:1px solid #b9d3b2;padding:16px;font:15px 'PT Sans',sans-serif}
+/* admin hint */
+.admin{margin-top:40px;border:1px solid var(--line);background:#fff;padding:22px}
+.admin h3{margin:0 0 8px;font-size:18px}
+.admin ol{margin:0;padding-left:20px;font:15px/1.7 'PT Sans',sans-serif}
+footer{border-top:3px double var(--ink);padding:26px 0 40px;font:13px/1.7 'PT Sans',sans-serif;color:var(--mute)}
+@media(max-width:820px){.grid{grid-template-columns:1fr;gap:30px}.issue{grid-template-columns:110px 1fr;gap:16px}.arch{grid-template-columns:repeat(2,1fr)}.top{flex-direction:column;align-items:flex-start}.meta{text-align:left}.logo .t{font-size:32px}h1{font-size:27px}.amet{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="demo">Эскиз для обсуждения: <b>главная, выпуск, статья, архив и приём рукописей</b>. Статьи и авторы условные.</div>
+<header>
+ <div class="wrap">
+  <div class="top">
+   <a class="logo" data-go="home"><span class="t">Гранит науки</span><span class="s">Ежемесячный научный журнал · ISSN 0000-0000</span></a>
+   <div class="meta">Выходит с 2019 года<br>Рецензируемое издание</div>
+  </div>
+  <nav class="sans">
+   <a data-go="home" class="on">Текущий номер</a>
+   <a data-go="archive">Архив</a>
+   <a data-go="authors">Авторам</a>
+   <a data-go="submit">Отправить рукопись</a>
+   <a data-go="about">О журнале</a>
+  </nav>
+ </div>
+</header>
+
+<main class="wrap">
+ <!-- HOME -->
+ <section class="view on" id="v-home">
+  <div class="grid">
+   <div>
+    <div class="kicker">Текущий номер</div>
+    <div class="issue">
+     <div class="cover"><div class="ct">Гранит<br>науки</div><div class="cn">№ 11 (83)<br>ноябрь 2026</div><div class="cb">Технические науки · Экономика · Педагогика</div></div>
+     <div>
+      <h1>№ 11 (83), ноябрь 2026</h1>
+      <p class="sans" style="color:var(--mute);margin:0 0 14px">12 статей · 148 страниц · <a href="#" onclick="return false">PDF номера, 4,2 МБ</a></p>
+      <ul class="alist" id="cur"></ul>
+     </div>
+    </div>
+   </div>
+   <aside>
+    <div class="box"><h3>Приём рукописей</h3><p>В декабрьский номер - до <b>25 ноября</b>. Рецензирование 10-14 дней.</p><a class="btn" data-go="submit">Отправить рукопись</a></div>
+    <div class="box"><h3>Журнал индексируется</h3><div class="idx">РИНЦ (eLIBRARY)<br>Google Scholar<br>КиберЛенинка<br>Crossref, DOI для каждой статьи</div></div>
+    <div class="box"><h3>Ближайшие номера</h3><p>№ 12 - декабрь 2026<br>№ 1 - январь 2027</p></div>
+   </aside>
+  </div>
+ </section>
+
+ <!-- ARTICLE -->
+ <section class="view" id="v-article">
+  <div class="art">
+   <div class="crumbs"><a data-go="home">Текущий номер</a> → <span id="a-issue">№ 11 (83)</span></div>
+   <div class="kicker" id="a-sec"></div>
+   <h1 id="a-title"></h1>
+   <div class="auth" id="a-auth" style="font-size:16px"></div>
+   <dl class="amet">
+    <dt>Выпуск</dt><dd id="a-iss">№ 11 (83), ноябрь 2026, с. 14-22</dd>
+    <dt>УДК</dt><dd id="a-udk"></dd>
+    <dt>DOI</dt><dd><a href="#" onclick="return false" id="a-doi"></a></dd>
+    <dt>Ключевые слова</dt><dd id="a-kw"></dd>
+   </dl>
+   <div class="abstract"><b class="sans">Аннотация.</b> <span id="a-abs"></span></div>
+   <p style="margin-top:20px"><a class="btn" href="#" onclick="return false">Скачать PDF статьи</a> &nbsp; <a class="btn ghost" data-go="home">← К содержанию</a></p>
+   <div class="cite"><button onclick="navigator.clipboard&&navigator.clipboard.writeText(document.getElementById('a-cite').innerText);this.textContent='Скопировано'">Копировать</button><b>Как цитировать:</b> <span id="a-cite"></span></div>
+   <p class="note" style="margin-top:14px">В коде страницы - метатеги citation_* для Google Scholar и РИНЦ: название, авторы, выпуск, страницы, PDF.</p>
+  </div>
+ </section>
+
+ <!-- ARCHIVE -->
+ <section class="view" id="v-archive">
+  <h1>Архив номеров</h1>
+  <div class="years" id="years"></div>
+  <div class="arch" id="arch"></div>
+ </section>
+
+ <!-- AUTHORS -->
+ <section class="view" id="v-authors">
+  <div class="art">
+   <h1>Авторам</h1>
+   <p>Принимаем оригинальные статьи объёмом 5-15 страниц. Оформление - по ГОСТ Р 7.0.5-2008, аннотация 150-250 слов, ключевые слова 5-8, УДК обязателен.</p>
+   <p><b>Порядок публикации:</b> отправка рукописи → проверка на оригинальность → рецензирование (10-14 дней) → правки автора → публикация в ближайшем номере и присвоение DOI.</p>
+   <p><a class="btn" data-go="submit">Отправить рукопись</a></p>
+  </div>
+ </section>
+
+ <!-- SUBMIT -->
+ <section class="view" id="v-submit">
+  <h1>Отправить рукопись</h1>
+  <p class="sans" style="color:var(--mute);max-width:640px">Заявка уходит редакции на почту через SMTP, копия - автору. Файлы сохраняются в админке.</p>
+  <form id="f">
+   <label>ФИО автора (авторов)<input required placeholder="Иванов Иван Иванович"></label>
+   <label>E-mail для связи<input type="email" required placeholder="author@university.ru"></label>
+   <label>Название статьи<input required></label>
+   <label>Раздел<select><option>Технические науки</option><option>Экономика</option><option>Педагогика</option><option>Филология</option></select></label>
+   <label>Рукопись (DOC, DOCX, PDF до 20 МБ)<div class="drop" id="drop">Перетащите файл или нажмите, чтобы выбрать</div><input type="file" id="file" accept=".doc,.docx,.pdf" style="display:none"></label>
+   <label class="sans" style="font-weight:400"><input type="checkbox" required style="width:auto;margin-right:8px">Согласен с условиями публикации и обработкой персональных данных</label>
+   <div><button class="btn" type="submit">Отправить в редакцию</button></div>
+   <div class="sent" id="sent">Спасибо! Рукопись получена, номер заявки <b>GN-2026-1147</b>. Копия письма отправлена на ваш e-mail.</div>
+  </form>
+ </section>
+
+ <!-- ABOUT -->
+ <section class="view" id="v-about">
+  <div class="art">
+   <h1>О журнале</h1>
+   <p>«Гранит науки» - ежемесячный рецензируемый научный журнал. Публикует результаты исследований в области технических, экономических и гуманитарных наук.</p>
+   <div class="admin">
+    <h3>Как редактор добавит новый номер (за 5 минут)</h3>
+    <ol>
+     <li>Записи → «Выпуски» → «Добавить»: номер, месяц, обложка, PDF номера.</li>
+     <li>Записи → «Статьи» → «Добавить»: название, авторы, аннотация, УДК, DOI, PDF, выбрать выпуск из списка.</li>
+     <li>Отметить выпуск «Текущий» - главная и архив обновятся сами.</li>
+    </ol>
+   </div>
+  </div>
+ </section>
+</main>
+
+<footer><div class="wrap">© 2019-2026 Научный журнал «Гранит науки» · Свидетельство о регистрации СМИ · Редакция: editor@granit-nauki.ru<br>Эскиз сайта на WordPress: собственная лёгкая тема, выпуски и статьи через CPT + ACF.</div></footer>
+
+<script>
+const A=[
+ {s:'Технические науки',t:'Оценка долговечности бетонных конструкций в условиях циклического замораживания',a:'Петров А.В., Смирнова Е.К.',udk:'691.32:620.193',kw:'бетон, морозостойкость, долговечность, циклы замораживания',p:'5-13',abs:'Рассмотрены механизмы деградации бетона при многократном замораживании и оттаивании. Предложена расчётная модель, учитывающая пористость и водонасыщение, проверенная на 48 образцах.'},
+ {s:'Технические науки',t:'Алгоритм раннего обнаружения утечек в сетях водоснабжения по данным датчиков давления',a:'Ковалёв Д.С.',udk:'628.15:004.94',kw:'водоснабжение, утечки, датчики давления, машинное обучение',p:'14-22',abs:'Предложен алгоритм выявления утечек по аномалиям давления в реальном времени. На данных городской сети точность обнаружения составила 91% при задержке менее 15 минут.'},
+ {s:'Экономика',t:'Цифровая маркировка товаров и её влияние на издержки малого бизнеса',a:'Орлова М.Н., Белов И.Р.',udk:'338.24:658',kw:'маркировка, малый бизнес, издержки, цифровизация',p:'23-31',abs:'На выборке из 120 предприятий оценены прямые и косвенные затраты на внедрение маркировки. Показано, что окупаемость достигается в среднем за 14 месяцев.'},
+ {s:'Педагогика',t:'Проектное обучение в инженерных вузах: опыт трёх учебных лет',a:'Захарова Л.П.',udk:'378.147',kw:'проектное обучение, инженерное образование, компетенции',p:'32-39',abs:'Обобщён опыт внедрения проектного обучения на трёх потоках студентов. Описаны изменения в успеваемости и мотивации, предложены рекомендации для кафедр.'}
+];
+const cur=document.getElementById('cur');
+A.forEach((x,i)=>{const li=document.createElement('li');li.innerHTML=`<span class="tag">${x.s}</span><br><a class="atitle" data-a="${i}">${x.t}</a><div class="auth">${x.a} · с. ${x.p}</div>`;cur.appendChild(li);});
+function go(v){document.querySelectorAll('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.go===v||(v==='article'&&a.dataset.go==='home')));scrollTo({top:0,behavior:'smooth'});}
+function openA(i){const x=A[i];document.getElementById('a-sec').textContent=x.s;document.getElementById('a-title').textContent=x.t;document.getElementById('a-auth').textContent=x.a;
+ document.getElementById('a-udk').textContent=x.udk;document.getElementById('a-doi').textContent='10.00000/gn.2026.11.0'+(i+1);document.getElementById('a-kw').textContent=x.kw;document.getElementById('a-abs').textContent=x.abs;
+ document.getElementById('a-iss').textContent='№ 11 (83), ноябрь 2026, с. '+x.p;
+ document.getElementById('a-cite').textContent=`${x.a} ${x.t} // Гранит науки. 2026. № 11 (83). С. ${x.p}. DOI: 10.00000/gn.2026.11.0${i+1}`;go('article');}
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){e.preventDefault();go(g.dataset.go);}const a=e.target.closest('[data-a]');if(a){e.preventDefault();openA(+a.dataset.a);}});
+// archive
+const ys=[2026,2025,2024],M=['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+const yb=document.getElementById('years'),ar=document.getElementById('arch');
+function showY(y){yb.querySelectorAll('button').forEach(b=>b.classList.toggle('on',+b.textContent===y));ar.innerHTML='';const n=y===2026?11:12;
+ for(let m=n;m>=1;m--){const num=(y-2019)*12+m-1;const d=document.createElement('div');d.className='cover';d.innerHTML=`<div class="ct">Гранит<br>науки</div><div class="cn">№ ${m} (${num})<br>${M[m-1]} ${y}</div><div class="cb">PDF · ${8+((m*7)%9)} статей</div>`;d.onclick=()=>go('home');ar.appendChild(d);}}
+ys.forEach(y=>{const b=document.createElement('button');b.textContent=y;b.onclick=()=>showY(y);yb.appendChild(b);});showY(2026);
+// form
+const drop=document.getElementById('drop'),file=document.getElementById('file');
+drop.onclick=()=>file.click();file.onchange=()=>{if(file.files[0]){drop.textContent='Файл: '+file.files[0].name;drop.classList.add('ok');}};
+['dragover','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();if(ev==='drop'&&e.dataTransfer.files[0]){drop.textContent='Файл: '+e.dataTransfer.files[0].name;drop.classList.add('ok');}}));
+document.getElementById('f').onsubmit=e=>{e.preventDefault();document.getElementById('sent').style.display='block';};
+</script>
+</body>
+</html>
