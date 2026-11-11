@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Гранит науки - эскиз 2</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f2747;--navy2:#16365f;--teal:#13a39a;--ink:#16202c;--mute:#5d6878;--line:#e3e8ef;--bg:#f6f8fb;--tealt:#0b6f69}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.6 'IBM Plex Sans',Arial,sans-serif;color:var(--ink);background:#fff}
+a{color:var(--navy2)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.demo{background:var(--tealt);color:#fff;font-size:13px;text-align:center;padding:7px}
+header{background:var(--navy);color:#fff}
+.hd{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none}
+.mark{width:42px;height:42px;border:2px solid var(--teal);display:grid;place-items:center;font:600 18px 'IBM Plex Serif';color:#fff;transform:rotate(45deg)}
+.mark span{transform:rotate(-45deg)}
+.logo b{font:600 22px 'IBM Plex Serif';letter-spacing:.01em}.logo small{display:block;font-size:12px;color:#9fb3cc;margin-top:-2px}
+nav{display:flex;gap:24px;font-size:15px}nav a{color:#cfdaea;text-decoration:none}nav a:hover{color:#fff}
+.sbtn{background:var(--tealt);color:#fff;text-decoration:none;font-weight:600;padding:10px 18px;border-radius:8px}
+/* hero */
+.hero{background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;padding:56px 0 70px;position:relative;overflow:hidden}
+.hero:before{content:'';position:absolute;right:-120px;top:-120px;width:520px;height:520px;border:1px solid rgba(19,163,154,.35);transform:rotate(45deg)}
+.hero:after{content:'';position:absolute;right:-40px;top:-40px;width:360px;height:360px;border:1px solid rgba(255,255,255,.12);transform:rotate(45deg)}
+.hg{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:end;position:relative;z-index:1}
+.kick{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:600}
+.num{font:600 120px/0.95 'IBM Plex Serif';margin:10px 0 6px;letter-spacing:-.03em}
+.num small{font-size:40px;color:#9fb3cc;margin-left:10px;letter-spacing:0}
+.hero p{color:#cfdaea;max-width:560px;font-size:17px}
+.hbtns{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.b{display:inline-block;padding:12px 20px;border-radius:8px;font-weight:600;text-decoration:none;cursor:pointer;border:0;font-family:inherit;font-size:15px}
+.b.t{background:var(--tealt);color:#fff}.b.o{border:1px solid rgba(255,255,255,.4);color:#fff;background:transparent}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.15)}
+.stats div{background:var(--navy2);padding:18px}.stats b{display:block;font:600 34px 'IBM Plex Serif'}.stats span{font-size:13px;color:#9fb3cc}
+/* toolbar */
+.tool{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+.tb{display:flex;gap:14px;align-items:center;padding:14px 0;flex-wrap:wrap}
+.search{flex:1;min-width:260px;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--bg)}
+.search input{border:0;background:none;font:16px inherit;font-family:inherit;width:100%;outline:none}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:#fff;border-radius:20px;padding:7px 14px;font-size:14px;cursor:pointer}
+.chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+/* articles */
+.main{display:grid;grid-template-columns:1fr 300px;gap:44px;padding:36px 0 60px}
+.cnt{font-size:14px;color:var(--mute);margin-bottom:10px}
+.art{display:grid;grid-template-columns:62px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.art:hover{background:var(--bg)}
+.pg{font:600 15px 'IBM Plex Serif';color:var(--tealt);padding-top:3px}
+.sec{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute);font-weight:600}
+.art h3{font:600 20px/1.35 'IBM Plex Serif';margin:4px 0 6px;color:var(--navy)}
+.au{font-size:14px;color:var(--mute)}
+.doi{font-size:13px;color:var(--tealt);margin-top:6px}
+mark{background:#c9f0ec;padding:0 2px}
+.empty{padding:30px;text-align:center;color:var(--mute);display:none}
+aside .box{border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:18px}
+aside h4{margin:0 0 12px;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
+.ed{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.ed i{width:40px;height:40px;border-radius:50%;background:var(--bg);border:1px solid var(--line);display:grid;place-items:center;font-style:normal;font-weight:600;color:var(--navy)}
+.ed b{display:block;font-size:14px}.ed span{font-size:12px;color:var(--mute)}
+.dl{display:flex;justify-content:space-between;font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line)}
+/* steps */
+.steps{background:var(--bg);padding:56px 0}
+.steps h2{font:600 32px 'IBM Plex Serif';color:var(--navy);margin:0 0 26px}
+.st{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:s}
+.st div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;position:relative}
+.st div:before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--tealt);color:#fff;font-weight:700;margin-bottom:10px}
+.st b{display:block}.st span{font-size:14px;color:var(--mute)}
+/* modal */
+.mod{position:fixed;inset:0;background:rgba(15,39,71,.55);display:none;place-items:center;z-index:30;padding:20px}
+.mod.on{display:grid}
+.mc{background:#fff;border-radius:16px;max-width:760px;width:100%;max-height:90vh;overflow:auto;padding:30px;animation:pop .25s ease}
+@keyframes pop{from{transform:translateY(16px);opacity:0}}
+.mc h2{font:600 26px/1.3 'IBM Plex Serif';color:var(--navy);margin:6px 0 8px}
+.meta{display:grid;grid-template-columns:130px 1fr;gap:6px 14px;font-size:14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin:14px 0}
+.meta dt{color:var(--mute)}.meta dd{margin:0}
+.ab{background:var(--bg);border-left:3px solid var(--teal);padding:14px 16px;font-size:15px}
+.ref{margin-top:14px;font-size:13px;background:#fff;border:1px dashed var(--line);padding:12px;border-radius:8px}
+.x{float:right;border:0;background:none;font-size:26px;cursor:pointer;color:var(--mute)}
+footer{background:var(--navy);color:#9fb3cc;padding:30px 0;font-size:14px}
+@media(max-width:900px){.hg,.main{grid-template-columns:1fr}.num{font-size:80px}nav{display:none}.st{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="demo">Эскиз 2 · современная подача. Статьи и авторы условные. <a href="../" style="color:#fff">← эскиз 1</a></div>
+<header><div class="wrap hd">
+ <a class="logo" href="#"><div class="mark"><span>Г</span></div><div><b>Гранит науки</b><small>научный журнал · ISSN 0000-0000</small></div></a>
+ <nav><a href="#list">Текущий номер</a><a href="#list">Архив</a><a href="#steps">Авторам</a><a href="#">О журнале</a></nav>
+ <a class="sbtn" href="#steps">Отправить статью</a>
+</div></header>
+<section class="hero"><div class="wrap hg">
+ <div>
+  <div class="kick">Текущий выпуск · ноябрь 2026</div>
+  <div class="num">№ 11<small>(83)</small></div>
+  <p>Технические науки, экономика, педагогика. Все статьи в открытом доступе, с DOI и индексацией в РИНЦ и Google Scholar.</p>
+  <div class="hbtns"><a class="b t" href="#list">Содержание номера</a><a class="b o" href="#" onclick="return false">PDF номера · 4,2 МБ</a></div>
+ </div>
+ <div class="stats"><div><b>83</b><span>выпуска</span></div><div><b>960+</b><span>статей</span></div><div><b>14 дн.</b><span>рецензирование</span></div><div><b>DOI</b><span>каждой статье</span></div></div>
+</div></section>
+<div class="tool"><div class="wrap tb">
+ <label class="search">🔎<input id="q" placeholder="Поиск по названию, автору или ключевым словам"></label>
+ <div class="chips" id="chips"></div>
+</div></div>
+<div class="wrap main" id="list">
+ <div><div class="cnt" id="cnt"></div><div id="arts"></div><div class="empty" id="empty">Ничего не найдено. Попробуйте другой запрос.</div></div>
+ <aside>
+  <div class="box"><h4>Приём рукописей</h4><div class="dl"><span>В № 12</span><b>до 25 ноября</b></div><div class="dl"><span>Рецензирование</span><b>10-14 дней</b></div><div class="dl"><span>Объём</span><b>5-15 стр.</b></div><a class="b t" href="#steps" style="display:block;text-align:center;margin-top:14px">Отправить статью</a></div>
+  <div class="box"><h4>Редколлегия</h4>
+   <div class="ed"><i>ИС</i><div><b>Иванов С.П.</b><span>гл. редактор, д.т.н., профессор</span></div></div>
+   <div class="ed"><i>КМ</i><div><b>Кузнецова М.А.</b><span>д.э.н.</span></div></div>
+   <div class="ed"><i>ЛВ</i><div><b>Лебедев В.Н.</b><span>д.п.н.</span></div></div></div>
+ </aside>
+</div>
+<section class="steps" id="steps"><div class="wrap">
+ <h2>Как опубликоваться</h2>
+ <div class="st"><div><b>Отправка</b><span>Форма с файлом рукописи</span></div><div><b>Проверка</b><span>Оригинальность и оформление</span></div><div><b>Рецензия</b><span>10-14 дней</span></div><div><b>Правки</b><span>Если рецензент попросит</span></div><div><b>Публикация</b><span>В номере + DOI</span></div></div>
+</div></section>
+<footer><div class="wrap">© 2019-2026 «Гранит науки» · Эскиз 2: WordPress, собственная тема, выпуски и статьи через CPT + ACF, поиск по статьям.</div></footer>
+<div class="mod" id="mod"><div class="mc"><button class="x" onclick="document.getElementById('mod').classList.remove('on')">×</button>
+ <div class="sec" id="m-sec"></div><h2 id="m-t"></h2><div class="au" id="m-a"></div>
+ <dl class="meta"><dt>Выпуск</dt><dd id="m-i"></dd><dt>УДК</dt><dd id="m-u"></dd><dt>DOI</dt><dd id="m-d"></dd><dt>Ключевые слова</dt><dd id="m-k"></dd></dl>
+ <div class="ab"><b>Аннотация.</b> <span id="m-ab"></span></div>
+ <div class="ref"><b>Для цитирования:</b> <span id="m-r"></span></div>
+ <p style="margin-top:16px"><a class="b t" href="#" onclick="return false">Скачать PDF</a></p>
+</div></div>
+<script>
+const A=[
+ {s:'Технические науки',t:'Оценка долговечности бетонных конструкций в условиях циклического замораживания',a:'Петров А.В., Смирнова Е.К.',p:'5-13',k:'бетон, морозостойкость, долговечность',u:'691.32:620.193',ab:'Рассмотрены механизмы деградации бетона при многократном замораживании и оттаивании. Предложена расчётная модель, проверенная на 48 образцах.'},
+ {s:'Технические науки',t:'Алгоритм раннего обнаружения утечек в сетях водоснабжения по данным датчиков давления',a:'Ковалёв Д.С.',p:'14-22',k:'водоснабжение, утечки, датчики давления',u:'628.15:004.94',ab:'Предложен алгоритм выявления утечек по аномалиям давления в реальном времени. Точность обнаружения 91% при задержке менее 15 минут.'},
+ {s:'Экономика',t:'Цифровая маркировка товаров и её влияние на издержки малого бизнеса',a:'Орлова М.Н., Белов И.Р.',p:'23-31',k:'маркировка, малый бизнес, издержки',u:'338.24:658',ab:'На выборке из 120 предприятий оценены затраты на внедрение маркировки. Окупаемость достигается в среднем за 14 месяцев.'},
+ {s:'Экономика',t:'Региональные различия в доступности ипотечного кредитования',a:'Сафонова Т.Г.',p:'32-40',k:'ипотека, регионы, доступность жилья',u:'332.8',ab:'Построен индекс доступности ипотеки для 85 регионов, выявлены факторы разрыва между центром и периферией.'},
+ {s:'Педагогика',t:'Проектное обучение в инженерных вузах: опыт трёх учебных лет',a:'Захарова Л.П.',p:'41-48',k:'проектное обучение, инженерное образование',u:'378.147',ab:'Обобщён опыт внедрения проектного обучения на трёх потоках студентов, предложены рекомендации для кафедр.'},
+ {s:'Педагогика',t:'Цифровые тренажёры при подготовке операторов технологических установок',a:'Никитин Р.О., Егорова А.С.',p:'49-57',k:'тренажёры, подготовка персонала, промышленность',u:'377.3:004',ab:'Сравнены результаты обучения операторов на цифровом тренажёре и по традиционной программе.'}
+];
+const secs=['Все',...new Set(A.map(a=>a.s))];let cur='Все';
+const chips=document.getElementById('chips');secs.forEach((s,i)=>{const c=document.createElement('button');c.className='chip'+(i?'':' on');c.textContent=s;c.onclick=()=>{cur=s;chips.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===c));render();};chips.appendChild(c);});
+const q=document.getElementById('q');q.oninput=render;
+const hl=(t,w)=>w?t.replace(new RegExp('('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>'):t;
+function render(){const w=q.value.trim().toLowerCase();const L=A.map((a,i)=>({...a,i})).filter(a=>(cur==='Все'||a.s===cur)&&(!w||(a.t+a.a+a.k).toLowerCase().includes(w)));
+ document.getElementById('cnt').textContent=L.length+' '+(L.length===1?'статья':L.length<5&&L.length>0?'статьи':'статей')+' в № 11 (83)';
+ document.getElementById('arts').innerHTML=L.map(a=>`<div class="art" data-i="${a.i}"><div class="pg">с. ${a.p}</div><div><div class="sec">${a.s}</div><h3>${hl(a.t,q.value.trim())}</h3><div class="au">${hl(a.a,q.value.trim())}</div><div class="doi">DOI 10.00000/gn.2026.11.0${a.i+1}</div></div></div>`).join('');
+ document.getElementById('empty').style.display=L.length?'none':'block';}
+render();
+document.getElementById('arts').onclick=e=>{const el=e.target.closest('.art');if(!el)return;const a=A[+el.dataset.i],i=+el.dataset.i;
+ const set=(id,v)=>document.getElementById(id).textContent=v;set('m-sec',a.s);set('m-t',a.t);set('m-a',a.a);set('m-i','№ 11 (83), ноябрь 2026, с. '+a.p);set('m-u',a.u);set('m-d','10.00000/gn.2026.11.0'+(i+1));set('m-k',a.k);set('m-ab',a.ab);
+ set('m-r',`${a.a} ${a.t} // Гранит науки. 2026. № 11 (83). С. ${a.p}. DOI: 10.00000/gn.2026.11.0${i+1}`);document.getElementById('mod').classList.add('on');};
+document.getElementById('mod').onclick=e=>{if(e.target.id==='mod')e.target.classList.remove('on');};
+</script>
+</body>
+</html>
